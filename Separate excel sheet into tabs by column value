@@ -1,0 +1,6 @@
+excel=pd.read_excel( file_name )
+writer = pd.ExcelWriter( new_file_name, engine='xlsxwriter')
+for item in excel['column'].unique():
+    newdf = excel[excel['column']==item]
+    newdf.to_excel(writer, sheet_name=item, index= False)
+writer.save()
